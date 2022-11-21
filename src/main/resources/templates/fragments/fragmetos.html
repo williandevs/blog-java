@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="https://www.thymeleaf.org">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="author" content="Willian Figueiredo">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.1/font/bootstrap-icons.css">
+    <!-- CSS Boostrap -->
+    <link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css" />
+    <!-- Css -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <link rel="shortcut icon" href="favicon.ico" type="icon.ico">
+
+
+    <title>java Cup</title>
+</head>
+
+<body>
+
+    <header th:fragment="cabecalho">
+        <nav class="navbar navbar-expand-lg bg-light p-4">
+            <div class="container d-flex justify-content-around">
+                <a class="navbar-brand" href="/" ${posts}>Java <i class="bi bi-cup-hot-fill" style="color: red;"></i>
+                    Cup</Blog></a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse " id="navbarSupportedContent">
+                    <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="/posts">Blog</a>
+                        </li>
+
+
+                        <li class="nav-item">
+                            <a class="nav-link " aria-current="page" href="/about">Sobre</a>
+                        </li>
+
+
+                        <li class="nav-item">
+                            <a class="nav-link " aria-current="page" href="#">vagas </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link " aria-current="page" href="/contact">Contato</a>
+                        </li>
+
+
+
+                    </ul>
+                    <form class="d-flex" role="search">
+                        <input class="form-control me-2" type="search" placeholder="Pesquisar" aria-label="Pesquisar">
+
+                        <button class="btn btn-outline-primary" type="submit">Pesquisar</button>
+                    </form>
+                    &nbsp;&nbsp;
+                    <div>
+                        <span>
+                            <a href="/newpost" class="btn btn-primary" role="button">
+                                <i class="bi bi-gear-fill"></i>
+                            </a>
+                        </span>
+
+                    </div>
+
+                </div>
+            </div>
+        </nav>
+
+
+        </div>
+    </header>
+
+    <section>
+        <div class="container p-5">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col">Id</th>
+                        <th scope="col">Titulo</th>
+                        <th scope="col">Autor</th>
+                        <th scope="col">Data</th>
+                        <th scope="col">Texto</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr scope="row" th:each="lista: ${lista}">
+
+                        <td><span th:text="${lista.id}"></span></td>
+                        <td><span th:text="${lista.titulo}"></span></td>
+                        <td><span th:text="${lista.autor}"></span></td>
+                        <td><span th:text="${lista.data}"></span></td>
+                        <td><span th:text="${lista.texto}"></span></td>
+
+
+                    </tr>
+
+
+
+                </tbody>
+            </table>
+        </div>
+
+    </section>
+
+
+
+
+
+    <footer th:fragment="rodape">
+
+        <!-- Copyright -->
+        <div class="text-center p-5 mt-5" style="background-color: rgba(0, 0, 0, 0.05);">
+            © 2022 Copyright:
+            <a class="text-reset fw-bold" href="https://williamdev.com.br" target="_blank">williamdevs.com</a>
+        </div>
+        <!-- Copyright -->
+    </footer>
+
+
+
+    <script src="/webjars/jquery/3.6.1/jquery.min.js"></script>
+    <script src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+</body>
+
+</html>

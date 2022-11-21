@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="https://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <title>panel de controle</title>
+    <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
+   
+    <!-- CSS Boostrap-->
+    <link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css" />
+  
+    <!-- CSS -->
+    <link href="css/main.css" rel="stylesheet" />
+
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-bs4.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-bs4.js"></script>
+
+</head>
+
+
+<body class="sb-nav-fixed p-3">
+    <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
+
+        <a class="navbar-brand ps-3" href="posts">Pagina inicial</a>
+        <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
+            <div class="input-group">
+                <input class="form-control" type="text" aria-describedby="btnNavbarSearch" />
+                <button class="btn btn-primary" id="btnNavbarSearch" type="button">Pesquisar<i
+                        class="fas fa-search"></i></button>
+            </div>
+        </form>
+
+    </nav>
+
+    <div id="layoutSidenav">
+        <div id="layoutSidenav_nav">
+            <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+                <div class="sb-sidenav-menu">
+                    <div class="nav">
+
+                        <a class="nav-link" th:href="@{/}">
+
+                            Home
+                        </a>
+                        <a class="nav-link" th:href="@{/lista}">
+
+                            lista de Blogs
+                        </a>
+
+
+
+
+
+                    </div>
+                </div>
+                <div class="sb-sidenav-footer">
+
+                    Clientes
+                </div>
+            </nav>
+        </div>
+
+        <!-- PARTE DO CENTRO  -->
+        <div id="layoutSidenav_content">
+            <main>
+                <div class="container">
+                    <h1 class="mt-4">Dashboard</h1>
+                    <ol class="breadcrumb mb-4">
+                        <li class="breadcrumb-item active">Dashboard</li>
+                    </ol>
+
+                    <!-- form -->
+                    <section class="container mt-3" id="styloDaPAgina">
+
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="/posts">Posts</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">Novo Post</li>
+                            </ol>
+                        </nav>
+                        <div>
+                            <th:block th:include="mensagemValidacao"></th:block>
+                            <div class="card">
+                                <small class="form-text text-muted"><span style="color:red ;">(*) Campos
+                                        obrigatórios</span></small>
+                                <form method="post">
+                                    <div class="form-group p-3">
+                                        <input type="text" class="form-control" name="titulo" placeholder="Título *">
+                                    </div>
+                                    <div class="form-group p-3">
+                                        <input type="text" class="form-control" name="autor" placeholder="Autor *">
+                                    </div>
+
+                                    <textarea id="summernote" type="text" class="form-control" name="texto"
+                                        placeholder="Texto *"></textarea>
+
+                                    <div class="form-group p-3">
+
+                                        <br>
+                                        <button type="submit" class="btn btn-primary"
+                                            style="margin-top: 10px;">Publicar</button>
+                                        <a href="/posts" class="btn btn-light" role="button"
+                                            style="margin-top: 10px;">Cancelar</a>
+
+                                    </div>
+                                </form>
+                            </div>
+
+                        </div>
+                    </section>
+                    <!-- lista de posts -->
+
+
+            </main>
+            <div th:replace="fragments/fragmetos :: rodape"></div>
+        </div>
+    </div>
+
+
+
+
+
+    <script>
+        $('#summernote').summernote({
+            placeholder: 'Texto *',
+            tabsize: 2,
+            height: 300
+        });
+    </script>
+</body>
+
+</html>
